@@ -44,6 +44,9 @@ class Poli:
         self.nama_poli = nama_poli
         self.dokter_list = []
         self.jadwal_list = []
+
+    def __str__(self):
+        return self.nama_poli
         
     def TambahDokter(self, dokter):
         self.dokter_list.append(dokter)
