@@ -44,7 +44,7 @@ class Poli:
         self.nama_poli = nama_poli
         self.dokter_list = []
         self.jadwal_list = []
-
+        
     def __str__(self):
         return self.nama_poli
         
@@ -76,6 +76,41 @@ class Poli:
         else:
             None
 
+    def TambahJadwalBaru(poli):
+        poli.TampilDaftar()
+        pilihan_dokter = int(input("Pilih dokter (nomor): "))
+        Dokter_terpilih = poli.PilihanDokter(pilihan_dokter)
+
+        if Dokter_terpilih:
+            hari = input("Masukkan Jadwal baru[Hari], Contoh(Monday):")
+            jam_awal = input("Masukkan Jadwal baru[Jam Awal], Format(HH:MM): ")
+            jam_akhir = input("Masukkan Jadwal baru[Jam Akhir], Format(HH:MM): ")
+
+            jadwal_baru = Jadwal(Dokter_terpilih, hari, jam_awal, jam_akhir)
+            poli.TambahJadwal(jadwal_baru)
+            print("Jadwal berhasil ditambahkan.")
+        else:
+            print("Pilihan Dokter Invalid.")
+
+
+    def UpdateJadwal(poli):
+        poli.TampilJadwal()
+        pilihan_jadwal = int(input("Pilih Jadwal yang ingin diubah(nomor): "))
+        Jadwal_terpilih = poli.PilihanJadwal(pilihan_jadwal)
+
+        if Jadwal_terpilih:
+            print(f"Jadwal yang dipilih: {Jadwal_terpilih}")
+            hari_baru = input("Masukkan Jadwal baru[Hari], Contoh(Monday):")
+            jam_awal_baru = input("Masukkan Jadwal baru[Jam Awal], Format(HH:MM): ")
+            jam_akhir_baru = input("Masukkan Jadwal baru[Jam Akhir], Format(HH:MM): ")
+
+            Jadwal_terpilih.hari = hari_baru
+            Jadwal_terpilih.jam_awal = jam_awal_baru
+            Jadwal_terpilih.jam_akhir = jam_akhir_baru
+            print("Jadwal berhasil diubah!")
+        else:
+            print("Pilihan jadwal tidak valid.")
+
 class JadwalPoli():
     def __init__(self, nama):
         self.nama = nama
@@ -95,40 +130,7 @@ class JadwalPoli():
         else:
             return None
         
-def TambahJadwalBaru(poli):
-        poli.TampilDaftar()
-        pilihan_dokter = int(input("Pilih dokter (nomor): "))
-        Dokter_terpilih = poli.PilihanDokter(pilihan_dokter)
 
-        if Dokter_terpilih:
-            hari = input("Masukkan Jadwal baru[Hari], Contoh(Monday):")
-            jam_awal = input("Masukkan Jadwal baru[Jam Awal], Format(HH:MM): ")
-            jam_akhir = input("Masukkan Jadwal baru[Jam Akhir], Format(HH:MM): ")
-
-            jadwal_baru = Jadwal(Dokter_terpilih, hari, jam_awal, jam_akhir)
-            poli.TambahJadwal(jadwal_baru)
-            print("Jadwal berhasil ditambahkan.")
-        else:
-            print("Pilihan Dokter Invalid.")
-
-
-def UpdateJadwal(poli):
-    poli.TampilJadwal()
-    pilihan_jadwal = int(input("Pilih Jadwal yang ingin diubah(nomor): "))
-    Jadwal_terpilih = poli.PilihanJadwal(pilihan_jadwal)
-
-    if Jadwal_terpilih:
-        print(f"Jadwal yang dipilih: {Jadwal_terpilih}")
-        hari_baru = input("Masukkan Jadwal baru[Hari], Contoh(Monday):")
-        jam_awal_baru = input("Masukkan Jadwal baru[Jam Awal], Format(HH:MM): ")
-        jam_akhir_baru = input("Masukkan Jadwal baru[Jam Akhir], Format(HH:MM): ")
-
-        Jadwal_terpilih.hari = hari_baru
-        Jadwal_terpilih.jam_awal = jam_awal_baru
-        Jadwal_terpilih.jam_akhir = jam_akhir_baru
-        print("Jadwal berhasil diubah!")
-    else:
-        print("Pilihan jadwal tidak valid.")
 
 
 
@@ -195,4 +197,6 @@ if __name__ == "__main__":
                 print("Pilihan menu tidak valid")
     else:
         print("Pilihan Poli tidak valid")
+
+
 
