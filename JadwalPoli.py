@@ -1,3 +1,10 @@
+#Nama: Zaidan Zulkaisi Setiaji
+#Kelas: 1A - D4
+#NIM: 241524031
+#Desc: - Pasien dapat mengetahui jadwal yang tersedia.
+#      - Dapat mengupdate jadwal menyesuaikan kebutuhan.
+#      - Pasien dapat memilih Poli dan Dokter yang diinginkan.
+
 from datetime import datetime, time
 
 class Dokter:
